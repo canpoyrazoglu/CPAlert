@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
 
-  s.source       = { :git => "https://github.com/canpoyrazoglu/CPAlert.git", :tag => 'v0.1.0' }
+  s.source       = { :git => "https://github.com/canpoyrazoglu/CPAlert.git", :tag => 'v0.1.1' }
 
 
   s.source_files  = "Classes", "Classes/**/*.{h,m}"
