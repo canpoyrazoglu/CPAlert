@@ -5,14 +5,14 @@
 #import "CPAlert.h"
 
 @implementation CPAlert{
-    Action first, second, third, fourth;
+    CPAlertAction first, second, third, fourth;
     UIAlertView *alertView;
-    StringBlock inputBlock;
+    CPAlertStringBlock inputBlock;
 }
 
 static CPAlert *currentAlert; //needed else alert view gets dealloced due to ARC
 
-+(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description buttonTitle:(NSString*)buttonTitle tapHandler:(Action)handler{
++(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description buttonTitle:(NSString*)buttonTitle tapHandler:(CPAlertAction)handler{
     if(currentAlert){
         [currentAlert->alertView dismissWithClickedButtonIndex:-1 animated:YES];
         currentAlert = nil;
@@ -25,7 +25,7 @@ static CPAlert *currentAlert; //needed else alert view gets dealloced due to ARC
     return alert->alertView;
 }
 
-+(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description firstButtonTitle:(NSString*)firstButtonTitle firstButtonTapHandler:(Action)handler secondButtonTitle:(NSString*)secondButtonTitle secondButtonTapHandler:(Action)secondHandler{
++(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description firstButtonTitle:(NSString*)firstButtonTitle firstButtonTapHandler:(CPAlertAction)handler secondButtonTitle:(NSString*)secondButtonTitle secondButtonTapHandler:(CPAlertAction)secondHandler{
     if(currentAlert){
         [currentAlert->alertView dismissWithClickedButtonIndex:-1 animated:YES];
         currentAlert = nil;
@@ -40,7 +40,7 @@ static CPAlert *currentAlert; //needed else alert view gets dealloced due to ARC
     return alert->alertView;
 }
 
-+(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description firstButtonTitle:(NSString*)firstButtonTitle firstButtonTapHandler:(Action)handler secondButtonTitle:(NSString*)secondButtonTitle secondButtonTapHandler:(Action)secondHandler thirdButtonTitle:(NSString*)thirdButtonTitle thirdButtonTapHandler:(Action)thirdHandler{
++(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description firstButtonTitle:(NSString*)firstButtonTitle firstButtonTapHandler:(CPAlertAction)handler secondButtonTitle:(NSString*)secondButtonTitle secondButtonTapHandler:(CPAlertAction)secondHandler thirdButtonTitle:(NSString*)thirdButtonTitle thirdButtonTapHandler:(CPAlertAction)thirdHandler{
     if(currentAlert){
         [currentAlert->alertView dismissWithClickedButtonIndex:-1 animated:YES];
         currentAlert = nil;
@@ -56,7 +56,7 @@ static CPAlert *currentAlert; //needed else alert view gets dealloced due to ARC
     return alert->alertView;
 }
 
-+(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description firstButtonTitle:(NSString*)firstButtonTitle firstButtonTapHandler:(Action)handler secondButtonTitle:(NSString*)secondButtonTitle secondButtonTapHandler:(Action)secondHandler thirdButtonTitle:(NSString*)thirdButtonTitle thirdButtonTapHandler:(Action)thirdHandler fourthButtonTitle:(NSString*)fourthButtonTitle fourthButtonTapHandler:(Action)fourthHandler{
++(UIAlertView*)displayWithTitle:(NSString*)title description:(NSString*)description firstButtonTitle:(NSString*)firstButtonTitle firstButtonTapHandler:(CPAlertAction)handler secondButtonTitle:(NSString*)secondButtonTitle secondButtonTapHandler:(CPAlertAction)secondHandler thirdButtonTitle:(NSString*)thirdButtonTitle thirdButtonTapHandler:(CPAlertAction)thirdHandler fourthButtonTitle:(NSString*)fourthButtonTitle fourthButtonTapHandler:(CPAlertAction)fourthHandler{
     if(currentAlert){
         [currentAlert->alertView dismissWithClickedButtonIndex:-1 animated:YES];
         currentAlert = nil;
@@ -73,7 +73,7 @@ static CPAlert *currentAlert; //needed else alert view gets dealloced due to ARC
     return alert->alertView;
 }
 
-+(UIAlertView*)askFor:(NSString*)title withDescription:(NSString*)description completion:(StringBlock)completion{
++(UIAlertView*)askFor:(NSString*)title withDescription:(NSString*)description completion:(CPAlertStringBlock)completion{
     if(currentAlert){
         [currentAlert->alertView dismissWithClickedButtonIndex:-1 animated:YES];
         currentAlert = nil;
